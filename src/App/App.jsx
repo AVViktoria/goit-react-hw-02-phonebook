@@ -1,60 +1,56 @@
 // import { render } from "@testing-library/react";
-import React, {Component } from "react";
+import React, { Component } from 'react';
+import ContactList from 'components/ContactList';
+import ContactForm from '../components/ContactForm/ContactForm';
+import Filter from '../components/Filter/Filter';
 
 
-
-
- // //*      Root      //
+// //*      Root      //
 class App extends Component {
- state = {
-  contacts: [],
-  filter: '',
-  name: '',
-  number: ''
-}
+  state = {
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
+    name: '',
+    number: '',
+  };
 
+  //*  удаляем контакт из инпута фильтра   //
+  deleteContactItem = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+  //*                              //
+  formSubmitHandler = data => {
+    console.log(data);
+}
+//*                              //
 
   render() {
-    
+    const { contacts } = this.state;
     return (
       <>
         <h1>Phonebook</h1>
-        <div class = "ContactForm">
-        <div class = "itemName">
-          <h2>Name</h2>
-          <input
-  type="text"
-  name="name"
-  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-  title="Name"
-  required
-/>
-        </div>
-        <div class = "itemNumber">
-          <h2>Name</h2>
-          <input
-  type="tel"
-  name="number"
-  pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-  title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-  required
-/>
-        <button type = "button">Add contact</button>
-          </div>
-          </div>
-        <div class = "contactsList">
+        <ContactForm onSubmit={this.formSubmitHandler} />
           <h2>Contacts</h2>
-        </div>
-
-
+          <Filter/>
+          <ContactList
+            contacts={contacts}
+            onDeleteContactItem={this.deleteContactItem}
+          />
+       
       </>
-        
     );
   }
 }
 
 export default App;
-  
+
 //<div>
 //  <h1>Phonebook</h1>
 //  <ContactForm ... />
@@ -63,3 +59,17 @@ export default App;
 //  <Filter ... />
 //  <ContactList ... />
 //</div>
+
+
+//   handleInputName = evt => {
+//     console.log(evt.currentTarget.name);
+//     this.setState({ name: evt.currentTarget.name });
+//   };
+// handleInputNumber = evt => {
+//     console.log(evt.currentTarget.number);
+//     this.setState({ number: evt.currentTarget.number });
+// };
+//   handleInputFilter = evt => {
+//     console.log(evt.currentTarget.filter);
+//     this.setState({ filter: evt.currentTarget.filter });
+//   };
