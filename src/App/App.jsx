@@ -1,5 +1,8 @@
 // import { render } from "@testing-library/react";
 import React, { Component } from 'react';
+import { nanoid } from 'nanoid';
+
+// //*      Components      //
 import ContactList from 'components/ContactList';
 import ContactForm from '../components/ContactForm/ContactForm';
 import Filter from '../components/Filter/Filter';
@@ -19,28 +22,70 @@ class App extends Component {
     number: '',
   };
 
-  //*  удаляем контакт из инпута фильтра   //
+  //*  удаляем контакт из  списка  фильтра   //
   deleteContactItem = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
-  //*                              //
-  formSubmitHandler = data => {
-    console.log(data);
-}
+  // //*                              //
+  // formSubmitHandler = e => {
+  //   e.preventDefault();
+  //   console.log(e);
+  // }
+  
+
+  //*  берем  данные по сабмиту  кнопки  //
+  addContact = ({ name, number }) => {
+    const normalizedFilter = name.toLowerCase();
+    
+    const checkByName = this.state.contacts.find(contact => contact.name.toLowerCase() === normalizedFilter);
+    if (checkByName) {
+      alert(`${name} is already in contacts`);
+    } else {
+      const contact = {
+        id: nanoid(),
+        name, number,
+        completed: false,
+      };
+    
+      this.setState(({ contacts }) => ({
+        contacts: [contact, ...contacts],
+      }));
+    };
+  }
+
+
+ //*  фильтруем по имени  //
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter),
+    );
+  }
+    // //*  прописываем  внутри инпута   //
+  handleChange = evt => {
+    // const { name, value } = evt.currentTarget;
+    // this.setState({ [name]: [value] });
+    this.setState({ filter: evt.currentTarget.value });
+  };
 //*                              //
+  
 
   render() {
-    const { contacts } = this.state;
+    const { filter } = this.state;
+    const visibleContacts =  this.getVisibleContacts();
     return (
       <>
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.formSubmitHandler} />
+        <ContactForm onSubmit={this.addContact} />
           <h2>Contacts</h2>
-          <Filter/>
+        <Filter value={filter}
+            onChange={this.handleChange}/>
           <ContactList
-            contacts={contacts}
+            contacts={visibleContacts}
             onDeleteContactItem={this.deleteContactItem}
           />
        
@@ -50,7 +95,7 @@ class App extends Component {
 }
 
 export default App;
-
+// onChange={this.changeFilter} 
 //<div>
 //  <h1>Phonebook</h1>
 //  <ContactForm ... />
@@ -73,3 +118,4 @@ export default App;
 //     console.log(evt.currentTarget.filter);
 //     this.setState({ filter: evt.currentTarget.filter });
 //   };
+

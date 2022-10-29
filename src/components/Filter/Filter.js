@@ -1,35 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Filter extends Component {
-  state = {
-    filter: '',
-  };
+const Filter = ({ value, onChange }) => {
+  // state = {
+  //   filter: '',
+  // };
 
-  //*  прописываем  внутри инпута   //
-  handleChange = evt => {
-    const { name, value } = evt.currentTarget;
-    this.setState({ [name]: [value] });
-  };
+  // changeFilter = e => {
+  //     this.setState({ filter: e.currentTarget.value });
+  // };
+  return (
+    <form>
+      <label>
+        Find contacts by name
+        <input
+          type="text"
+          value={value}
+          onChange={onChange}
+          name="filter"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Filter"
+          required
+        />
+      </label>
+    </form>
+  );
+};
 
-  render() {
-    return (
-      <form>
-        <label>
-          Find contacts by name
-          <input
-            type="text"
-            value={this.state.filter}
-            onChange={this.handleChange}
-            name="filter"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Filter"
-            required
-          />
-        </label>
-      </form>
-    );
-  }
-}
 export default Filter;
 //*  очищаем   сбрасываем   форму  //
 // reset = () => {

@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 class ContactForm extends Component {
   state = {
     name: '',
     number: '',
   };
-  nameInputId = nanoid();
-  numberInputId = nanoid();
+  // nameInputId = nanoid();
+  // numberInputId = nanoid();
 
   //*  прописываем  внутри инпута   //
   handleChange = evt => {
     const { name, value } = evt.currentTarget;
-    this.setState({ [name]: [value] });
+    this.setState({ [name]: value });
   };
 
   //*  слушатель событий по кнопке  //
