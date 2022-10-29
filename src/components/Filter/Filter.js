@@ -4,6 +4,10 @@ const Filter = ({ value, onChange }) => {
   // state = {
   //   filter: '',
   // };
+  //*  очищаем   сбрасываем   форму  //
+  // reset = () => {
+  //   this.setState({ filter: '' });
+  // };
 
   // changeFilter = e => {
   //     this.setState({ filter: e.currentTarget.value });
@@ -27,7 +31,3 @@ const Filter = ({ value, onChange }) => {
 };
 
 export default Filter;
-//*  очищаем   сбрасываем   форму  //
-// reset = () => {
-//   this.setState({ filter: '' });
-// };
