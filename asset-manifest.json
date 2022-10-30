@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/AVViktoria/goit-react-hw-02-phonebook.git/static/css/main.7acaea2f.css",
-    "main.js": "/AVViktoria/goit-react-hw-02-phonebook.git/static/js/main.2c41ff6e.js",
+    "main.js": "/AVViktoria/goit-react-hw-02-phonebook.git/static/js/main.529a0d09.js",
     "index.html": "/AVViktoria/goit-react-hw-02-phonebook.git/index.html",
     "main.7acaea2f.css.map": "/AVViktoria/goit-react-hw-02-phonebook.git/static/css/main.7acaea2f.css.map",
-    "main.2c41ff6e.js.map": "/AVViktoria/goit-react-hw-02-phonebook.git/static/js/main.2c41ff6e.js.map"
+    "main.529a0d09.js.map": "/AVViktoria/goit-react-hw-02-phonebook.git/static/js/main.529a0d09.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.2c41ff6e.js"
+    "static/js/main.529a0d09.js"
   ]
 }
