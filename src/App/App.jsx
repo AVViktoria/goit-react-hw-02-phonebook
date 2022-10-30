@@ -54,7 +54,6 @@ class App extends Component {
     };
   }
 
-
  //*  фильтруем по имени  //
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
