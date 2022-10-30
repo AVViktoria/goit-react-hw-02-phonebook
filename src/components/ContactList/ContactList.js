@@ -6,15 +6,15 @@ export default function ContactList({ contacts, onDeleteContactItem }) {
     <ul>
       {contacts.map(({ id, name, number }) => (
         <li key={id}>
-          {/* <p>
-            {name} : {number}
-          </p> */}
           <p>
+            {name} : {number}
+          </p>
+          {/* <p>
             id ={id}
             name = {name}
             number = {number}
             onDeleteItem = {onDeleteContactItem}
-          </p>
+          </p> */}
           <button type="button" onClick={() => onDeleteContactItem(id)}>
             Delete
           </button>
