@@ -3,18 +3,19 @@ import { nanoid } from 'nanoid';
 
 // //*      Components      //
 import ContactList from 'components/ContactList';
-import ContactForm from '../components/ContactForm/ContactForm';
-import Filter from '../components/Filter/Filter';
+import ContactForm from 'components/ContactForm';
+import Filter from 'components/Filter';
+import Section from 'components/Section';
 
 
 // //*      Root      //
 class App extends Component {
   state = {
     contacts: [
-      // { id: nanoid(), name: 'Rosie Simpson', number: '459-12-56' },
-      // { id: nanoid(), name: 'Hermione Kline', number: '443-89-12' },
-      // { id: nanoid(), name: 'Eden Clements', number: '645-17-79' },
-      // { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
+      { id: nanoid(), name: 'Rosie Simpson', number: '459-12-56' },
+      { id: nanoid(), name: 'Hermione Kline', number: '443-89-12' },
+      { id: nanoid(), name: 'Eden Clements', number: '645-17-79' },
+      { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
     name: '',
@@ -77,16 +78,19 @@ class App extends Component {
     const visibleContacts =  this.getVisibleContacts();
     return (
       <>
-        <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.addContact} />
-          <h2>Contacts</h2>
+        <Section title={'Phonebook'}>
+        {/* <h1>Phonebook</h1> */}
+          <ContactForm onSubmit={this.addContact} />
+        </Section>
+        <Section title={'Contacts'}>
+          {/* <h2>Contacts</h2> */}
         <Filter value={filter}
             onChange={this.handleChange}/>
           <ContactList
             contacts={visibleContacts}
             onDeleteContactItem={this.deleteContactItem}
           />
-       
+       </Section>
       </>
     );
   }
