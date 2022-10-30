@@ -14,18 +14,21 @@ const Filter = ({ value, onChange }) => {
   // };
   return (
     <form>
-      <label>
-        Find contacts by name
-        <input
-          type="text"
-          value={value}
-          onChange={onChange}
-          name="filter"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Filter"
-          required
-        />
-      </label>
+      <div className="inputBox">
+        <label className="inputLabel">
+          Find contacts by name
+          <input
+            className="inputContent"
+            type="text"
+            value={value}
+            onChange={onChange}
+            name="filter"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Filter"
+            required
+          />
+        </label>
+      </div>
     </form>
   );
 };

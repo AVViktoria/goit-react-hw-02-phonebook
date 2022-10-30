@@ -7,16 +7,17 @@ const ContactList = ({ contacts, onDeleteContactItem }) => {
     <ul>
       {contacts.map(elt => {
         return (
-          <li key={elt.id}>
-            <span>
+          <li key={elt.id} className="listContacts">
+            <span className="contact">
               {elt.name}: {elt.number}
             </span>
             <button
+              className="listButton"
               type="button"
               id={elt.id}
               onClick={() => onDeleteContactItem(elt.id)}
             >
-              Delete
+              x
             </button>
           </li>
         );

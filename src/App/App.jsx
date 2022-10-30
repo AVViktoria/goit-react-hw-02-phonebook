@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
+import '../index.scss'
 
-// //*      Components      //
+//*      Libraries      //
+import { nanoid } from 'nanoid';
+// import styled from 'styled-components'
+// import { color } from 'styled-system'
+
+
+
+
+//*      Components      //
 import ContactList from 'components/ContactList';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
-import Section from 'components/Section';
+import Container from 'components/Container';
+import Section from 'components/Section/Section';
 
 
-// //*      Root      //
+//*      Root      //
 class App extends Component {
   state = {
     contacts: [
@@ -78,19 +87,21 @@ class App extends Component {
     const visibleContacts =  this.getVisibleContacts();
     return (
       <>
-        <Section title={'Phonebook'}>
-        {/* <h1>Phonebook</h1> */}
+        <Section >
+        <Container >
+        <h1 className = "title">Phonebook</h1>
           <ContactForm onSubmit={this.addContact} />
-        </Section>
-        <Section title={'Contacts'}>
-          {/* <h2>Contacts</h2> */}
+        </Container>
+        <Container >
+          <h2 className = "title">Contacts</h2>
         <Filter value={filter}
             onChange={this.handleChange}/>
           <ContactList
             contacts={visibleContacts}
             onDeleteContactItem={this.deleteContactItem}
           />
-       </Section>
+          </Container>
+          </Section>
       </>
     );
   }
